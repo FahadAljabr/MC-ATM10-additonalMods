@@ -1,6 +1,15 @@
 hash-format = "sha256"
 
 [[files]]
+file = "index.md"
+hash = "8597b4781e2097f91e2876954328352673452948060e0d282cc9243f6a9e1765"
+
+[[files]]
 file = "mods/carry-on.pw.toml"
 hash = "838dbcb90c93bab58691e82c95045bd97c3e096e3a2680a00cf063e56ce35ce3"
+metafile = true
+
+[[files]]
+file = "mods/simple-voice-chat.pw.toml"
+hash = "8045c493b0eb0196880817b529417742bb65b250805cc14f7abe5ac5f1e4d4b1"
 metafile = true
