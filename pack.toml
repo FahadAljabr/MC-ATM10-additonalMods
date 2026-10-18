@@ -1,0 +1,13 @@
+name = "ATM10-Custom"
+author = "Fahad"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "e843deaded72f2369597a7a8415e165571b58b61d89262197265efe71af32752"
+
+[versions]
+minecraft = "1.21.1"
+neoforge = "21.1.259"
