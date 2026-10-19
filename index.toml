@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "index.md"
-hash = "8597b4781e2097f91e2876954328352673452948060e0d282cc9243f6a9e1765"
+hash = "351757c8aeefd5804552c9395bcafdf516ad571ff0bab381b2c31635dfd519bf"
 
 [[files]]
 file = "mods/carry-on.pw.toml"
