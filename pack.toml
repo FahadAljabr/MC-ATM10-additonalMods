@@ -1,13 +1,13 @@
-name = "ATM10-Custom"
+name = "FTB Evolution 2 - Fahad Add-ons"
 author = "Fahad"
-version = "1.0.0"
+version = "1.9.0-1"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "f84577eb44738f14e49e73a99c5b5483a4c7ffcc43c859bdeceed21031d6d9b9"
+hash = "d2420a362ee42a53368e2b44f776f3c73d962b7310906169ac65a32909764897"
 
 [versions]
-minecraft = "1.21.1"
-neoforge = "21.1.259"
+minecraft = "26.1.2"
+neoforge = "26.1.2.126"

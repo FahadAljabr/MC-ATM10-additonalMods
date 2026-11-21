@@ -1,3 +1,5 @@
-index.md text eol=lf
-index.toml text eol=lf
-pack.toml text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+.packwizignore text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf

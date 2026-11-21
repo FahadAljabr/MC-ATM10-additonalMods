@@ -3,3 +3,5 @@ packwiz.exe
 *.zip
 README.md
 .nojekyll
+backups/
+downloads/
