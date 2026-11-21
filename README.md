@@ -103,7 +103,7 @@ Launcher/server configuration backups: .fahad-updater/setup-backups/
 Do not delete .fahad-updater/managed.properties: it tracks owned JARs for removal.
 
 CURRENT ADDITIONS
-Distant Horizons 3.3.3 and Simple Voice Chat 2.6.22 (both sides).
+Distant Horizons 3.3.2 and Simple Voice Chat 2.6.22 (both sides).
 Voice chat still requires the server's UDP port 24454, or the allocated port.
 MineColonies is unavailable for Minecraft 26.1.2 and remains excluded.
 
@@ -114,3 +114,37 @@ base/user mod preservation, bad checksums, launch aborts, agent-before-main
 ordering, process locking, interrupted-update recovery, and Prism/ATLauncher/
 server setup. Tests ran with Java 21; the JAR targets Java 17+. A full FTB/Java25
 game launch and host-specific server panel setup were not tested.
+
+
+DISTANT HORIZONS / CHUNKY WORKAROUND
+
+The supplied client report crashes in Distant Horizons 3.3.3's ChunkyAccessor:
+java.lang.IllegalStateException: Chunky is not loaded.
+Chunky 1.5.66 is present. Distant Horizons is trying to access its API before
+it is initialized. This matches upstream Distant Horizons issue #1329.
+
+Workaround prepared: Distant Horizons 3.3.2 for Minecraft 26.1.2, NeoForge,
+on BOTH sides. It is pinned to prevent packwiz update --all selecting 3.3.3.
+The original official JAR is unmodified and SHA512 verified.
+
+The local C:\Minecraft repo has been updated. Commit/push these together:
+  mods/distant-horizons.pw.toml
+  index.toml
+  pack.toml
+Then restart the server and fully close/relaunch all clients. The updater
+replaces its managed 3.3.3 JAR with 3.3.2; no new updater JAR is required.
+Wait for any GitHub index-refresh workflow to complete before relaunching.
+
+This ZIP contains repository metadata, not Minecraft's installed mod files.
+For manual testing, replace the old DistantHorizons-3.3.3 JAR with the official
+3.3.2 JAR on both sides and ensure only one Distant Horizons version remains.
+Apply the repo change first so automatic updating does not reinstall 3.3.3.
+Keep Chunky from the FTB base pack in place.
+
+Verification: upstream report and release metadata checked; JAR integrity,
+NeoForge metadata and download hash verified. A full FTB game launch with
+this workaround has not been tested. The client/server updater downgrade
+test is checked separately before delivery.
+
+Upstream issue: https://gitlab.com/distant-horizons-team/distant-horizons/-/work_items/1329
+Official release: https://modrinth.com/mod/distanthorizons/version/8lNwBMTz
