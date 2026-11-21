@@ -1,89 +1,116 @@
-FTB EVOLUTION 2 1.9.0 - FAHAD'S ADDITIONS
-Prepared: 22 November 2026
+# FTB Evolution 2 - Automatic GitHub Add-ons
 
-These are ADD-ON files. First install the official FTB Evolution 2 version
-1.9.0 on every computer and the server. These downloads do not contain the
-431-mod base pack and cannot launch Minecraft on their own.
+FAHAD'S AUTOMATIC MOD UPDATER - ONE JAR
 
-Exact base: Minecraft 26.1.2, NeoForge 26.1.2.126, Java 25.
-Install the same base pack version on the server and every client.
+Repository: https://github.com/FahadAljabr/MC-ATM10-additonalMods
+Source branch: main. GitHub Pages is not required by this JAR.
 
-Included (official NeoForge-compatible releases):
-- Distant Horizons 3.3.3 for Minecraft 26.1.2
-- Simple Voice Chat 2.6.22 for Minecraft 26.1.2
-  This is the latest version tagged Release in the checked Modrinth metadata;
-  newer 2.6.23-2.6.27 versions are tagged Beta.
-No additional required dependency mods are declared for these two files.
-The base pack already supplies the optional Cloth Config dependency.
+CLIENTS: USE YOUR EXISTING PRE-LAUNCH SETUP (RECOMMENDED FOR PRISM)
+1. Install FTB Evolution 2 version 1.9.0 first (Minecraft 26.1.2,
+   NeoForge 26.1.2.126, Java 25). Do this on every client and the server.
+2. Put fahad-auto-update.jar in the instance's Minecraft folder BESIDE mods,
+   not inside mods. In Prism this is usually instance/.minecraft/.
+3. Replace the old packwiz-installer-bootstrap pre-launch command with:
 
-MINECOLONIES IS NOT INCLUDED: its official files currently support Minecraft
-1.21.1 and older, not Minecraft 26.1.2. Installing that JAR here would be
-incompatible. Adding MineColonies requires choosing a different base pack
-on a supported Minecraft version for everyone, or waiting for an official port.
+   "$INST_JAVA" -jar "$INST_MC_DIR/fahad-auto-update.jar" --update client "$INST_MC_DIR"
 
-Carry On is already in FTB Evolution 2 1.9.0. Do not install the old 1.21.1
-Carry On or Simple Voice Chat JARs from the previous ATM10 add-on setup.
+4. Press Play normally. The updater downloads and verifies GitHub's additions
+   before the launcher starts Minecraft. Do not keep the old updater command.
+   Never run an update while that Minecraft instance is already running.
 
-The two mods must stay as separate JARs; do not combine or rename them into
-one server.jar. The server starts with the official FTB/NeoForge launch script.
+PRISM OR ATLAUNCHER: AUTOMATIC ONE-TIME SETUP ALTERNATIVE
+If you do not want to configure a pre-launch command, close Minecraft and its
+launcher, then double-click the JAR. Select Prism/ATLauncher client and choose
+the existing FTB instance folder. For Prism choose the folder with instance.cfg
+(or its .minecraft folder); for ATLauncher choose the folder with instance.json.
+The installer copies itself beside mods and adds a Java agent argument to
+THAT INSTANCE. Reopen the launcher and press Play. Keep your other JVM options.
+If you use this method, clear the previous bootstrap pre-launch command manually
+first. Choose EITHER the new pre-launch command OR the automatic installer.
+The agent method also prevents updating while that instance is running.
 
-Validation: downloaded from the official Modrinth CDN; sizes and SHA512
-checksums match the official metadata; JAR integrity and NeoForge mod metadata
-checked against the FTB 1.9.0 manifest. No full Minecraft launch or multiplayer
-test was possible: C:\Minecraft contains only packwiz add-on metadata, not
-an installed FTB client/server. Test in a copy before applying to a live world.
+If double-click does not open Java, run with Java 17 or newer:
+  java -jar fahad-auto-update.jar
+Or configure just this instance's Java/JVM arguments manually:
+  -javaagent:fahad-auto-update.jar=client
+The JAR must remain beside mods. Do not set this globally for all instances.
+FTB Evolution 2 itself must still launch with Java 25.
 
-Official sources:
-FTB version: https://www.feed-the-beast.com/modpacks/135-ftb-evolution-2/versions
-FTB exact manifest: https://api.feed-the-beast.com/v1/modpacks/public/modpack/135/100614
-MineColonies files: https://www.curseforge.com/minecraft/mc-mods/minecolonies/files/all
-Distant Horizons: https://modrinth.com/mod/distanthorizons/version/QHxoccsN
-Simple Voice Chat: https://modrinth.com/plugin/simple-voice-chat/version/rVZ2FMgU
-Voice chat setup: https://modrepo.de/minecraft/voicechat/wiki/server_setup
+SERVER: ONE-TIME SETUP
+Stop the installed FTB Evolution 2 1.9.0 server. Put the SAME JAR beside its
+mods folder. In that server folder, run this once:
+  java -jar fahad-auto-update.jar --install-server .
+This backs up and adds the following line to user_jvm_args.txt:
+  -javaagent:fahad-auto-update.jar=server
+Start the server with its normal NeoForge run.bat/run.sh. Every server start
+checks GitHub before NeoForge discovers mods. Restart the server to receive
+new changes; it does not replace mods while players are online.
 
-CLIENT INSTALLATION (YOUR PC AND FRIENDS)
-1. Close Minecraft. Install FTB Evolution 2 1.9.0 in your launcher.
-2. Open that instance's folder from the launcher. Back it up.
-3. Copy both JARs from this ZIP's mods folder into the instance's mods folder.
-   Keep the base pack's existing mods. Remove older copies of these same two
-   mods if present, so there is only one version of each.
-4. Launch the pack with Java 25 and join the matching server.
-5. Open the Simple Voice Chat menu with V (default key) and select your mic.
-6. Configure Distant Horizons in its settings. Shader compatibility depends
-   on the selected shader; start with shaders off while testing.
+If your host's startup command ignores user_jvm_args.txt, add the same
+-javaagent argument to the HOST'S JVM/startup options instead. It must appear
+before the main class or -jar argument, with the JAR beside mods and the
+working directory set to the server folder. This is not a server.jar replacement.
+Another supported server startup sequence is:
+  java -jar fahad-auto-update.jar --update server .
+  [only if that succeeds] run your usual server start command
 
-Send this client ZIP to your friends. Each friend needs the official base pack.
+OWNER: ADD, UPDATE, OR REMOVE MODS ON GITHUB
+Push the prepared C:\Minecraft repository changes to main once to publish
+the updater source and the automatic index-refresh workflow. No push was
+performed for you. The finished JAR already works with the current live repo.
 
-SERVER INSTALLATION (UPLOAD TO YOUR HOST)
-1. Stop the server and back up its files and world.
-2. Install the official FTB Evolution 2 server version 1.9.0 through your host
-   or FTB's version-specific server installer (pack 135, version 100614).
-   Use Java 25 and the pack's NeoForge 26.1.2.126 launch script.
-3. Upload the two JARs from this ZIP's mods folder into the server's mods folder.
-   Keep existing base pack mods; replace only older copies of these same mods.
-   These are NeoForge MODS; do not upload to plugins or replace server.jar.
-4. Start the server so the mods create their configuration files.
-5. Allocate/open UDP port 24454 in the hosting panel/firewall/router as needed.
-   Voice chat uses UDP; opening only a TCP port will not work.
-   If your host gives you another UDP port, stop the server and set port=YOURPORT
-   in config/voicechat/voicechat-server.properties, then restart.
-6. Give your friends the client ZIP. Test with /voicechat test PLAYERNAME
-   as an operator after they join. Each player needs the voice chat client mod.
+Option A - packwiz metadata (recommended):
+  packwiz.exe modrinth add MOD_SLUG
+  packwiz.exe update MOD_SLUG
+  packwiz.exe remove MOD_SLUG
+Then refresh the index and commit/push the changed mods, index.toml, pack.toml:
+  python updater/refresh_index.py .
+The existing packwiz.exe refresh command also works.
 
-Distant Horizons on the server is optional for basic client-side LOD caching;
-it is included here for server-side LOD support. Start with default settings
-and monitor CPU/disk load. The base pack includes Chunky: avoid running heavy
-terrain pregeneration while assessing performance.
+Option B - edit through GitHub:
+Upload/change/delete a compatible mod's .pw.toml file under mods/.
+Or upload a compatible JAR directly under mods/ (less convenient for updates).
+After the workflow is published, GitHub Actions refreshes the index hashes
+automatically on a mods/ push. Wait for "Refresh mod update index" to finish
+successfully before asking people to launch. If main is protected or Actions
+cannot write to it, use the local refresh-and-push method instead.
 
-This is an add-on upload ZIP, not a complete standalone server installation.
+Every .pw.toml supports side="both", side="client", or side="server".
+Raw JAR files apply to both sides, so use .pw.toml for side-specific mods.
+Use NeoForge mods compatible with Minecraft 26.1.2, and include all required
+dependencies. Availability and download restrictions can prevent automation
+for some CurseForge files; publicly downloadable Modrinth files work directly.
+Do not use this add-on repo to replace existing FTB base-pack mods under new
+filenames: the older base-pack files are intentionally not removed.
 
-PACKWIZ SOURCE
-This folder describes only the two add-on mods; it is not a full FTB modpack.
-The index intentionally lists only the add-on metadata and index.md.
-The Minecraft/NeoForge versions match the official FTB 1.9.0 manifest.
-Do not point a packwiz installer at this source inside a managed base pack
-without first checking that it will preserve the base pack's files.
+HOW UPDATES WORK
+The JAR stages the repo's mod downloads in .fahad-updater, verifies packwiz
+checksums, then applies only the add-on JARs. It replaces/removes JARs it has
+previously managed. Base mods and unrelated JARs remain in place. A conflicting
+unmanaged filename with different contents causes a clear error instead of
+silently overwriting it. An exact existing copy can be adopted as a managed mod.
+Worlds, configs, resource packs, and Minecraft/NeoForge versions are not synced.
+Only the repo's mods/*.jar output is installed by this add-on updater.
 
-The previous tracked setup is preserved in backups and in the delivered ZIP.
-The original packwiz.exe and Git repository are unchanged. No changes were
-committed or pushed. Existing hosted copies are unchanged until you publish.
+Failed downloads stop launch and leave the live mod set unchanged. Update
+transactions keep backups and recover interrupted changes on the next run.
+Internet is required on launch; there is no silent offline bypass. GitHub's
+cache/workflow completion may delay a freshly pushed update.
+
+Diagnostics: .fahad-updater/latest-update.log
+Mod rollback backups: .fahad-updater/backups/
+Launcher/server configuration backups: .fahad-updater/setup-backups/
+Do not delete .fahad-updater/managed.properties: it tracks owned JARs for removal.
+
+CURRENT ADDITIONS
+Distant Horizons 3.3.3 and Simple Voice Chat 2.6.22 (both sides).
+Voice chat still requires the server's UDP port 24454, or the allocated port.
+MineColonies is unavailable for Minecraft 26.1.2 and remains excluded.
+
+VALIDATION
+Tested against the real GitHub repo on client and server sides. Integration
+tests cover side filters, updates/removals, unchanged-mod download caching,
+base/user mod preservation, bad checksums, launch aborts, agent-before-main
+ordering, process locking, interrupted-update recovery, and Prism/ATLauncher/
+server setup. Tests ran with Java 21; the JAR targets Java 17+. A full FTB/Java25
+game launch and host-specific server panel setup were not tested.

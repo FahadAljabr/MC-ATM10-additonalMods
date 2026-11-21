@@ -5,3 +5,7 @@ README.md
 .nojekyll
 backups/
 downloads/
+updater/
+.github/
+.env
+.env.*

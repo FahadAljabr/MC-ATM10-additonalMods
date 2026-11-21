@@ -3,3 +3,8 @@
 .packwizignore text eol=lf
 .gitattributes text eol=lf
 .gitignore text eol=lf
+*.java text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.txt text eol=lf
+*.jar binary

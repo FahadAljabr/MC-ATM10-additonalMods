@@ -2,3 +2,8 @@ packwiz.exe
 backups/
 downloads/
 *.zip
+updater/.build/
+updater/.vendor/
+.fahad-updater/
+.env
+.env.*
