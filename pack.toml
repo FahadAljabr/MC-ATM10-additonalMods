@@ -1,12 +1,12 @@
 name = "FTB Evolution 2 - Fahad Add-ons"
 author = "Fahad"
-version = "1.9.0-2"
+version = "1.9.0-3"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "843041299f7106b6fc676b6f1776975d023a68ed3290666abf6e355e6493dc52"
+hash = "cdb159e0b653dd22964cb13e5c66a1568b0ff1980e278c3be33ab8d72e89c3f2"
 
 [versions]
 minecraft = "26.1.2"

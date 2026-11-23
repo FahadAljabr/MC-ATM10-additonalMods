@@ -2,12 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "index.md"
-hash = "7083a9fd1cd67771bf417fc7b4c47b1ef0b8762726e9a8683ca1116705ebb19c"
-
-[[files]]
-file = "mods/distant-horizons.pw.toml"
-hash = "e9ed6ab6fcb4609f312702a154d3f163ba7a3c0df14b97a48902b52d54f78839"
-metafile = true
+hash = "d5271f688131a42918f92b7aee5f900130c9f89f608d4c465aa6ddb7eb69b1c3"
 
 [[files]]
 file = "mods/simple-voice-chat.pw.toml"
